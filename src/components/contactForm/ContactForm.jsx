@@ -4,6 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { nanoid } from "nanoid";
 import { addContact } from "../../redux/contactsSlice";
+import styles from "./ContactForm.module.css";
 
 const UserSchema = Yup.object().shape({
   username: Yup.string()
@@ -36,16 +37,28 @@ export default function ContactForm() {
       validationSchema={UserSchema}
       onSubmit={handleSubmit}
     >
-      <Form>
+      <Form className={styles.form}>
         <div>
-          <Field type="text" name="username" placeholder="Name" />
+          <Field
+            className={styles.input}
+            type="text"
+            name="username"
+            placeholder="Name"
+          />
           <ErrorMessage name="username" component="div" />
         </div>
         <div>
-          <Field type="text" name="usernumber" placeholder="Number" />
+          <Field
+            className={styles.input}
+            type="text"
+            name="usernumber"
+            placeholder="Number"
+          />
           <ErrorMessage name="usernumber" component="div" />
         </div>
-        <button type="submit">Add Contact</button>
+        <button className={styles.button} type="submit">
+          Add Contact
+        </button>
       </Form>
     </Formik>
   );

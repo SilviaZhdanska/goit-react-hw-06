@@ -12,8 +12,13 @@ const filtersSlice = createSlice({
   },
 });
 
+// Експорт редюсера
+export const filtersReducer = filtersSlice.reducer;
+
+// Експорт екшенів
 export const { changeFilter } = filtersSlice.actions;
 
+// Експорт селектора
 export const selectNameFilter = (state) => state.filters.name;
 
-export default filtersSlice.reducer;
+export default filtersSlice;

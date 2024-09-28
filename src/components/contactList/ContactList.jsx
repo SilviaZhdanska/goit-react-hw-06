@@ -4,6 +4,7 @@ import { selectContacts } from "../../redux/contactsSlice";
 import { selectNameFilter } from "../../redux/filtersSlice";
 import Contact from "../contact/Contact";
 import { deleteContact } from "../../redux/contactsSlice";
+import styles from "./ContactList.module.css";
 
 export default function ContactList() {
   const contacts = useSelector(selectContacts);
@@ -15,13 +16,19 @@ export default function ContactList() {
   );
 
   return (
-    <ul>
+    <ul className={styles.list}>
       {filteredContacts.map((contact) => (
-        <Contact
-          key={contact.id}
-          contact={contact}
-          onDelete={() => dispatch(deleteContact(contact.id))}
-        />
+        <li className={styles.item} key={contact.id}>
+          <span>
+            {contact.name}: {contact.number}
+          </span>
+          <button
+            className={styles.deleteButton}
+            onClick={() => dispatch(deleteContact(contact.id))}
+          >
+            Delete
+          </button>
+        </li>
       ))}
     </ul>
   );
