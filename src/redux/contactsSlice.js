@@ -17,13 +17,10 @@ const contactsSlice = createSlice({
   },
 });
 
-// Експорт редюсера
 export const contactsReducer = contactsSlice.reducer;
 
-// Експорт екшенів
 export const { addContact, deleteContact } = contactsSlice.actions;
 
-// Експорт селектора
 export const selectContacts = (state) => state.contacts.items;
 
 export default contactsSlice;
